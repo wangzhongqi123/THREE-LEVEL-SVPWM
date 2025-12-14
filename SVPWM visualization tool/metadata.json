@@ -1,0 +1,5 @@
+{
+  "name": "3-Level SVPWM Visualizer",
+  "description": "A comprehensive visualization tool for Three-Level Space Vector Pulse Width Modulation (SVPWM). Explore vector sectors, timing calculations, and switching sequences in real-time.",
+  "requestFramePermissions": []
+}
