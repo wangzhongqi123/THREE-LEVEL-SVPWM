@@ -8,12 +8,7 @@
 Vref=m*Udc/√3*/
 #include "three_Level_SVPWM_config.h"
 
-#ifdef debug
-#define int16 short
-#define uint16_t unsigned short
-#define __sin arm_sin_f32
-#define __cos arm_cos_f32
-#endif //debug
+#include <stdint.h>
 
 typedef uint16_t SwitchState;
 
