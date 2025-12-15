@@ -7,6 +7,7 @@ void THREE_LEVEL_SVPWM_PROCESS(SVPWM_structure* svpwm, float m, float angle)
 {
 
     float Udc = svpwm->Udc;
+    (void)Udc;
     float Ts = svpwm->Ts;
 
     //防止Q15溢出
@@ -20,14 +21,14 @@ void THREE_LEVEL_SVPWM_PROCESS(SVPWM_structure* svpwm, float m, float angle)
 
     //向上取整的模过些日子看看dsp手册,看看有没有内联汇编函数可以用
     //暂时就是先用定点数除法处理
-    int16 angle_pu_q15 = FLOAT_TO_Q15(angle * inv_2pi);
-    int16 Major_Sector = (angle_pu_q15 + d2r60pu_q15 - 1) / d2r60pu_q15; //计算扇区1~6
+    int16_t angle_pu_q15 = FLOAT_TO_Q15(angle * inv_2pi);
+    int16_t Major_Sector = (angle_pu_q15 + d2r60pu_q15 - 1) / d2r60pu_q15; //计算扇区1~6
     Major_Sector = (Major_Sector == 0) ? 1 : Major_Sector;
     Major_Sector = (Major_Sector > 6) ? 6 : Major_Sector; 
 
     float angle_in_sector1 = angle - (Major_Sector - 1) * pi_DIV_3;  // 计算当前角度在小扇区内的偏移
 
-    int16 Minor_Sector = 0;
+    int16_t Minor_Sector = 0;
     //小于30°以内,Vref只能落在1,3,5号小扇区
     if(angle_in_sector1 <= pi_DIV_6)
     {
@@ -111,8 +112,8 @@ void THREE_LEVEL_SVPWM_PROCESS(SVPWM_structure* svpwm, float m, float angle)
 //01 10|01 10|01 10|11 00|01 10|01 10|01 10
 //00 11|01 10|01 10|01 10|01 10|01 10|00 11
 //T1/4, T2/2, T3/2, T1/2, T3/2, T2/2, T1/4
-void THREE_LEVEL_SVPWM_TimeState_Allocation_TimeAndState(SVPWM_structure* svpwm, int16 Major_Sector, 
-                                                         int16 Minor_Sector, float Ta, float Tb, float Tc)
+void THREE_LEVEL_SVPWM_TimeState_Allocation_TimeAndState(SVPWM_structure* svpwm, int16_t Major_Sector, 
+                                                         int16_t Minor_Sector, float Ta, float Tb, float Tc)
 {
     switch (Major_Sector)
     {
