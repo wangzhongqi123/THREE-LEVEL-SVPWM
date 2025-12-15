@@ -97,12 +97,12 @@ static inline void THREE_LEVEL_SVPWM_INIT(SVPWM_structure* svpwm, float Udc_valu
         svpwm->A_PHASE_STATE[i] = default_value;
         svpwm->B_PHASE_STATE[i] = default_value;
         svpwm->C_PHASE_STATE[i] = default_value;
+    }
         #ifdef ENABLE_NEUTRAL_POINT_BALANCE
         svpwm->Udc1 = 0.0f;
         svpwm->Udc2 = 0.0f;
         svpwm->k = 0.0f;
         #endif //ENABLE_NEUTRAL_POINT_BALANCE
-    }
 }
 
 //分配七段式时间和分配七段式状态
