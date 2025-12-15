@@ -37,7 +37,7 @@ typedef struct{
 
 #define DEG_TO_RAD(degrees)  ((degrees) * M_PI / 180.0f)
 
-#define FLOAT_TO_Q15(f) ((int16)((f) * Q15_SCALE))
+#define FLOAT_TO_Q15(f) ((int16_t)((f) * Q15_SCALE))
 
 #define d2r60pu_q15 5461 //60度对应弧度制的标幺值的Q15值
 #define inv_2pi  0.15915494309189f //1/2π
@@ -106,8 +106,8 @@ static inline void THREE_LEVEL_SVPWM_INIT(SVPWM_structure* svpwm, float Udc_valu
 }
 
 //分配七段式时间和分配七段式状态
-void THREE_LEVEL_SVPWM_TimeState_Allocation_TimeAndState(SVPWM_structure* svpwm, int16 Major_Sector, 
-                                                         int16 Minor_Sector, float Ta, float Tb, float Tc);
+void THREE_LEVEL_SVPWM_TimeState_Allocation_TimeAndState(SVPWM_structure* svpwm, int16_t Major_Sector, 
+                                                         int16_t Minor_Sector, float Ta, float Tb, float Tc);
 
 
 
