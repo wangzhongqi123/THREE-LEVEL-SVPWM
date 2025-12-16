@@ -112,6 +112,7 @@ void THREE_LEVEL_SVPWM_PROCESS(SVPWM_structure* svpwm, float m, float angle)
 //01 10|01 10|01 10|11 00|01 10|01 10|01 10
 //00 11|01 10|01 10|01 10|01 10|01 10|00 11
 //T1/4, T2/2, T3/2, T1/2, T3/2, T2/2, T1/4
+//这个函数经过实测，占用的空间非常大,必须改成查表法,这个马上就改
 void THREE_LEVEL_SVPWM_TimeState_Allocation_TimeAndState(SVPWM_structure* svpwm, int16_t Major_Sector, 
                                                          int16_t Minor_Sector, float Ta, float Tb, float Tc)
 {
